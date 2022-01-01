@@ -66,27 +66,15 @@ chmod 700 get_helm.sh
 ./get_helm.sh
 rm ./get_helm.sh
 
-echo "Installing Terraform ${terraform}..."
-curl -o terraform.zip https://releases.hashicorp.com/terraform/${terraform}/terraform_${terraform}_linux_amd64.zip
-unzip terraform.zip
-sudo mv terraform /usr/local/bin/terraform
-rm terraform.zip
+echo "Installing Terraform ..."
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+sudo apt update && sudo apt -y install terraform
 
-echo "Installing Packer ${packer}..."
-curl -o packer.zip https://releases.hashicorp.com/packer/${packer}/packer_${packer}_linux_amd64.zip
-unzip packer.zip
-sudo mv packer /usr/local/bin/packer
-rm packer.zip
-
-echo "Installing Terragrunt..."
-curl -o terragrunt -L https://github.com/gruntwork-io/terragrunt/releases/download/v${terragrunt}/terragrunt_linux_amd64
-sudo mv terragrunt /usr/local/bin/terragrunt
-
-echo "Installing Vault ${vault}..."
-curl -o vault.zip https://releases.hashicorp.com/vault/${vault}/vault_${vault}_linux_amd64.zip
-unzip vault.zip
-sudo mv vault /usr/local/bin/vault
-rm vault.zip
+echo "Installing Packer..."
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+sudo apt update && sudo apt install packer
 
 echo "Installing Postman..."
 sudo snap install postman
