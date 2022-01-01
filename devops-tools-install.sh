@@ -28,6 +28,13 @@ sudo apt install -y nodejs
 echo "Installing Java 11..."
 sudo apt install openjdk-11-jdk -y
 
+echo "Installing Go lang..."
+wget https://go.dev/dl/go1.17.5.linux-amd64.tar.gz
+sudo rm -rf /usr/local/go 
+sudo tar -C /usr/local -xzf go1.17.5.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+go version
+
 echo "Installing Ansible..."
 sudo apt-add-repository -y ppa:ansible/ansible
 sudo apt -y update
