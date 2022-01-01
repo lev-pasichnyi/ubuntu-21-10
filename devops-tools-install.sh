@@ -25,6 +25,10 @@ echo "Installing Node.js 16..."
 curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 sudo apt install -y nodejs
 
+echo "Installing TypeScript..."
+npm install -g typescript
+tsc --version
+
 echo "Installing Java 11..."
 sudo apt install openjdk-11-jdk -y
 
@@ -81,10 +85,12 @@ sudo snap install --classic code
 #curl -L "https://gist.github.com/nsticco/1b32f3b0f630df637436e407a8ba626d/raw" -o ~/.config/Code/User/settings.json
 git clone https://github.com/lemeb/a-better-ligaturizer.git ~/a-better-ligaturizer
 sudo cp -a ~/a-better-ligaturizer/output-fonts/. /usr/share/fonts/truetype/
-code --install-extension bradgashler.htmltagwrap \
-    --install-extension hashicorp.terraform \
+code --install-extension hashicorp.terraform \
     --install-extension eamodio.gitlens \
-    --install-extension ms-azuretools.vscode-docker
+    --install-extension golang.go \
+    --install-extension ms-python.python \
+    --install-extension ms-vscode.powershell \
+    --install-extension ms-vscode.vscode-node-azure-pack
 
 echo "Cleaning up after bootstrapping..."
 sudo apt -y autoremove
