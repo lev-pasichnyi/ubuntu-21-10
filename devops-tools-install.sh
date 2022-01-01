@@ -20,16 +20,22 @@ while [ $# -gt 0 ]; do
 done
 ##################################################################################
 
-echo "Installing general utilities..."
+echo " Installing curl git "
+sudo add-apt-repository -y ppa:git-core/ppa
 sudo apt -y update
-sudo apt -y install python3 python3-pip python3-virtualenv python3-setuptools npm git default-jdk unzip build-essential vim nano
+sudo apt -y install curl git
+
+echo " Installing powershell "
+wget https://github.com/PowerShell/PowerShell/releases/download/v7.2.1/powershell-lts_7.2.1-1.deb_amd64.deb
+sudo dpkg -i powershell-lts_7.2.1-1.deb_amd64.deb
+sudo apt-get install -f
 
 echo "Installing Node.js 16..."
-curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 sudo apt install -y nodejs
 
 echo "Installing Java 11..."
-sudo apt install openjdk-11-jdk
+sudo apt install openjdk-11-jdk -y
 
 echo "Installing Ansible..."
 sudo apt-add-repository -y ppa:ansible/ansible
