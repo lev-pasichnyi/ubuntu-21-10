@@ -90,7 +90,9 @@ code --install-extension hashicorp.terraform \
     --install-extension golang.go \
     --install-extension ms-python.python \
     --install-extension ms-vscode.powershell \
-    --install-extension ms-vscode.vscode-node-azure-pack
+    --install-extension ms-vscode.vscode-node-azure-pack \
+    --install-extension ms-vscode-remote.remote-containers \
+    --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
 
 echo "Cleaning up after bootstrapping..."
 sudo apt -y autoremove
