@@ -1,25 +1,6 @@
 #!/bin/bash
 # This script will bootstrap Ubuntu with DevOps related tools
 
-##################################################################################
-# Specify software versions by passing values to the named parameters below, e.g.:
-# ./bootstrap-ubuntu-devops.sh --terraform 1.0.9
-
-terraform=${terraform:-1.0.10}
-terragrunt=${terragrunt:-0.35.8}
-packer=${packer:-1.7.8}
-vault=${vault:-1.8.5}
-
-while [ $# -gt 0 ]; do
-  if [[ $1 == *"--"* ]]; then
-    param="${1/--/}"
-    declare $param="$2"
-    # echo $1 $2 // Optional to see the parameter:value result
-  fi
-  shift
-done
-##################################################################################
-
 echo " Installing curl git "
 sudo add-apt-repository -y ppa:git-core/ppa
 sudo apt -y update
@@ -78,6 +59,25 @@ sudo apt update && sudo apt install packer
 
 echo "Installing Postman..."
 sudo snap install postman
+# Visual Studio Code stuff -----------------------------------------------------------------------------------
+echo "Installing VS Code..."
+sudo snap install --classic code
+
+echo "Replacing VS Code settings..."
+#curl -L "https://gist.github.com/nsticco/1b32f3b0f630df637436e407a8ba626d/raw" -o ~/.config/Code/User/settings.json
+
+echo "Download coding fonts with ligatures..."
+git clone https://github.com/lemeb/a-better-ligaturizer.git ~/a-better-ligaturizer
+
+echo "Installing coding fonts..."
+sudo cp -a ~/a-better-ligaturizer/output-fonts/. /usr/share/fonts/truetype/
+
+echo "Installing VS Code extensions..."
+code --install-extension bradgashler.htmltagwrap \
+    --install-extension hashicorp.terraform \
+    --install-extension eamodio.gitlens \
+    --install-extension ms-azuretools.vscode-docker
+# END VS Code install -------------------------------------------------------------------------------------------
 
 echo "Cleaning up after bootstrapping..."
 sudo apt -y autoremove
