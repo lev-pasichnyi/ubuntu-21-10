@@ -6,6 +6,11 @@ sudo add-apt-repository -y ppa:git-core/ppa
 sudo apt -y update
 sudo apt -y install curl git
 
+# generate ssh keys and add them to ssh agent
+# ssh-keygen -t rsa -C 'your_email@mail.com'
+# eval "$(ssh-agent -s)"
+# ssh-add ~/.ssh/id_rsa
+
 echo " Installing powershell "
 wget https://github.com/PowerShell/PowerShell/releases/download/v7.2.1/powershell-lts_7.2.1-1.deb_amd64.deb
 sudo dpkg -i powershell-lts_7.2.1-1.deb_amd64.deb
