@@ -1,10 +1,12 @@
-# upgrade all packages in Ubuntu for first time use 
+echo " upgrade all packages for first time use " 
 sudo apt update && sudo apt upgrade
 
-# install missed fonts and codecs
+echo " install popular fonts and codecs "
 sudo apt install ubuntu-restricted-extras
 
-# install video player and video codecs
-# I prefer mpv, but you could use vlc: sudo apt install vlc
+echo " install MPV video player with codecs "
 sudo apt install mpv
 
+echo " cleaning up after bootstrapping..."
+sudo apt -y autoremove
+sudo apt -y clean
