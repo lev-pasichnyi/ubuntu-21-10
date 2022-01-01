@@ -90,9 +90,9 @@ sudo cp -a ~/a-better-ligaturizer/output-fonts/. /usr/share/fonts/truetype/
 code --install-extension hashicorp.terraform \
     --install-extension eamodio.gitlens \
     --install-extension golang.go \
-#    --install-extension ms-python.python \
+    --install-extension ms-azuretools.vscode-bicep \
     --install-extension ms-vscode.powershell \
-#    --install-extension ms-vscode.vscode-node-azure-pack \
+    --install-extension msazurermtools.azurerm-vscode-tools \
     --install-extension ms-vscode-remote.remote-containers \
     --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
 
