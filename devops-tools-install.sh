@@ -20,6 +20,7 @@ pwsh
 # install Az module in powershell session
 # Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 # Install-Module -Name Az -AllowClobber -Scope CurrentUser
+# Update-Help
 
 echo "Installing Node.js 16..."
 curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
