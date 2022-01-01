@@ -10,6 +10,11 @@ echo " Installing powershell "
 wget https://github.com/PowerShell/PowerShell/releases/download/v7.2.1/powershell-lts_7.2.1-1.deb_amd64.deb
 sudo dpkg -i powershell-lts_7.2.1-1.deb_amd64.deb
 sudo apt-get install -f
+pwsh
+
+# install Az module in powershell session
+# Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
+# Install-Module -Name Az -AllowClobber -Scope CurrentUser
 
 echo "Installing Node.js 16..."
 curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
@@ -32,7 +37,6 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o 
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt update
 sudo apt -y install docker-ce docker-ce-cli containerd.io
-sudo docker run hello-world
 
 echo "Installing kubectl..."
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -59,25 +63,16 @@ sudo apt update && sudo apt install packer
 
 echo "Installing Postman..."
 sudo snap install postman
-# Visual Studio Code stuff -----------------------------------------------------------------------------------
-echo "Installing VS Code..."
+
+echo "Installing VS Code, replace settings from GIST backup, use fonts with better view and install extensions."
 sudo snap install --classic code
-
-echo "Replacing VS Code settings..."
 #curl -L "https://gist.github.com/nsticco/1b32f3b0f630df637436e407a8ba626d/raw" -o ~/.config/Code/User/settings.json
-
-echo "Download coding fonts with ligatures..."
 git clone https://github.com/lemeb/a-better-ligaturizer.git ~/a-better-ligaturizer
-
-echo "Installing coding fonts..."
 sudo cp -a ~/a-better-ligaturizer/output-fonts/. /usr/share/fonts/truetype/
-
-echo "Installing VS Code extensions..."
 code --install-extension bradgashler.htmltagwrap \
     --install-extension hashicorp.terraform \
     --install-extension eamodio.gitlens \
     --install-extension ms-azuretools.vscode-docker
-# END VS Code install -------------------------------------------------------------------------------------------
 
 echo "Cleaning up after bootstrapping..."
 sudo apt -y autoremove
