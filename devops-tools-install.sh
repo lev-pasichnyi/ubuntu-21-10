@@ -53,6 +53,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o 
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt update
 sudo apt -y install docker-ce docker-ce-cli containerd.io
+sudo usermod -aG docker $USER
 
 echo "Installing kubectl..."
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -97,3 +98,4 @@ code --install-extension hashicorp.terraform \
 echo "Cleaning up after bootstrapping..."
 sudo apt -y autoremove
 sudo apt -y clean
+reboot
