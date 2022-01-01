@@ -1,11 +1,14 @@
-echo " upgrade all packages for first time use " 
+echo " upgrading all packages for the first time " 
 sudo apt update && sudo apt upgrade
 
-echo " install popular fonts and codecs "
+echo " installing popular fonts and codecs "
 sudo apt install ubuntu-restricted-extras
 
-echo " install MPV video player with codecs "
+echo " installing MPV video player with codecs "
 sudo apt install mpv
+
+echo " installing Telegram messenger "
+sudo snap install telegram-desktop
 
 echo " cleaning up after bootstrapping..."
 sudo apt -y autoremove
