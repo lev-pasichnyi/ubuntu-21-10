@@ -14,6 +14,11 @@ sudo apt -y install ./viber.deb
 echo " installing Telegram messenger "
 sudo snap install telegram-desktop
 
+echo " installing qbittorrent client "
+sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-stable
+sudo apt update
+sudo apt -y install qbittorrent
+
 echo " installing KVM virtualization"
 # number of CPU with virtualization capabilities
 egrep -c '(vmx|svm)' /proc/cpuinfo
