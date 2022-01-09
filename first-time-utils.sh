@@ -7,6 +7,10 @@ sudo apt install ubuntu-restricted-extras
 echo " installing MPV video player with codecs "
 sudo apt install mpv
 
+echo " install Viber desktop "
+wget https://download.cdn.viber.com/cdn/desktop/Linux/viber.deb
+sudo apt -y install ./viber.deb
+
 echo " installing Telegram messenger "
 sudo snap install telegram-desktop
 
