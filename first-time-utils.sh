@@ -1,3 +1,11 @@
+echo -e "\n  OS version: \n"
+lsb_release -a
+echo -e " \n VGA cards in the system \n"
+lspci | grep VGA
+echo -e "\n Amount of RAM \n"
+free -h
+sleep 10
+
 echo " upgrading all packages for the first time " 
 sudo apt update && sudo apt upgrade
 
