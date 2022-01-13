@@ -7,6 +7,14 @@ sudo apt install ubuntu-restricted-extras
 echo " installing MPV video player with codecs "
 sudo apt install mpv
 
+echo " installing gdebi package manager "
+sudo apt -y install gdebi-core wget
+
+echo " installing Chrome browser "
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+# or sudo gdebi google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+
 echo " install Viber desktop "
 wget https://download.cdn.viber.com/cdn/desktop/Linux/viber.deb
 sudo apt -y install ./viber.deb
