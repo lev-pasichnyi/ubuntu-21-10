@@ -47,6 +47,10 @@ sudo systemctl status libvirtd
 sleep 4
 sudo apt -y install virt-manager
 
+echo " installing Teav Viewer for remote administration "
+wget https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
+sudo gdebi teamviewer_15.25.5_amd64.deb
+
 echo " cleaning up after bootstrapping..."
 sudo apt -y autoremove
 sudo apt -y clean
