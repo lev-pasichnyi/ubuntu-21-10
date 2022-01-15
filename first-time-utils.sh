@@ -1,9 +1,15 @@
+sudo apt install net-tools
+
 echo -e "\n  OS version: \n"
 lsb_release -a
 echo -e " \n VGA cards in the system \n"
 lspci | grep VGA
 echo -e "\n Amount of RAM \n"
 free -h
+echo -e "\n my network and IPs \n"
+ifconfig -a
+hostname -I
+
 sleep 10
 
 echo " upgrading all packages for the first time " 
@@ -50,6 +56,9 @@ sudo apt -y install virt-manager
 echo " installing Teav Viewer for remote administration "
 wget https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
 sudo gdebi teamviewer_15.25.5_amd64.deb
+
+echo " installing Draw.io locally "
+sudo snap install drawio
 
 echo " cleaning up after bootstrapping..."
 sudo apt -y autoremove
