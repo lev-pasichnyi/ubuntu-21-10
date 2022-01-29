@@ -96,6 +96,12 @@ code --install-extension hashicorp.terraform \
     --install-extension ms-vscode-remote.remote-containers \
     --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
 
+echo " Installing minikube and start local k8s "
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+minikube start
+kubectl get nodes
+
 echo "Cleaning up after bootstrapping..."
 sudo apt -y autoremove
 sudo apt -y clean
