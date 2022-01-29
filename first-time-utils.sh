@@ -60,6 +60,10 @@ sudo gdebi teamviewer_15.25.5_amd64.deb
 echo " installing Draw.io locally "
 sudo snap install drawio
 
+echo " installing Slack on Ubuntu "
+curl -LO https://downloads.slack-edge.com/releases/linux/4.23.0/prod/x64/slack-desktop-4.23.0-amd64.deb
+sudo gdebi slack-desktop-4.23.0-amd64.deb
+
 echo " cleaning up after bootstrapping..."
 sudo apt -y autoremove
 sudo apt -y clean
